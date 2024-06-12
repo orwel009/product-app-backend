@@ -35,8 +35,30 @@ app.post("/view",(req,res)=>{
     )
 })
 
-app.get("/search",(req,res)=>{
-    res.send("Search DATA")
+app.post("/search",(req,res)=>{
+    let input = req.body
+    productModel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
+app.post("/delete",(req,res)=>{
+    let input = req.body
+    productModel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({"status":"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
 })
 
 app.listen(8080,()=>{
