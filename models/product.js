@@ -4,10 +4,11 @@ const schema = mongoose.Schema(
     {
      "productName":String,
      "price":String,
+     "category":String,
      "imgurl":String,
-     "description":""   
+     "description":String   
     }
 )
 
-let productModel=mongoose.Model("products",schema)
+let productModel=mongoose.model("products",schema)
 module.exports={productModel}
